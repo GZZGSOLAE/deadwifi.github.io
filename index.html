@@ -93,6 +93,15 @@
 
         .init-btn:active { transform: scale(0.98); }
 
+        /* Hidden Background YouTube Player Layer */
+        #yt-audio-container {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
         /* Navigation Bar */
         .navbar {
             border-bottom: 1px solid #110f22;
@@ -285,9 +294,10 @@
         </div>
     </div>
 
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://soundhelix.com" type="audio/mpeg">
-    </audio>
+    <!-- Target Div for YouTube JavaScript API Integration -->
+    <div id="yt-audio-container">
+        <div id="player"></div>
+    </div>
 
     <header class="navbar">
         <div class="nav-container">
@@ -320,6 +330,3 @@
                 <div class="code-box">Registry path: HKLM\SYSTEM\CurrentControlSet\Control\Class\...</div>
             </div>
             <div class="tweak-card">
-                <h3>Power Plan Configuration</h3>
-                <p>Force system thread processors out of core parking states by unlocking the native hidden Ultimate Performance profile.</p>
-                <div class="code-box">powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</div>
