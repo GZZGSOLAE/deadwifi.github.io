@@ -1,4 +1,4 @@
-/* Zero-Lag Base Resets */
+/* Zero-Lag Resets */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -6,87 +6,91 @@
 }
 
 body {
-    background-color: #080710;
-    color: #f5f5f7;
+    background-color: #030207;
+    color: #e2e1e9;
     font-family: 'Plus Jakarta Sans', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Unlocking Overlay Styling */
+/* Engine Activation Screen */
 #engine-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(8, 7, 16, 0.98);
+    background: #030207;
     z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .overlay-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, #090714 0%, #05040a 100%);
+    border: 1px solid #1a1635;
     padding: 40px;
     border-radius: 24px;
     text-align: center;
-    max-width: 400px;
+    max-width: 420px;
     width: 90%;
-    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .neon-pulse {
     font-size: 3rem;
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px #00f2fe;
-    animation: flash 1.5s infinite alternate;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px #bc34fa);
+    animation: bounce 2s infinite alternate;
 }
 
 .overlay-card h2 {
     font-weight: 800;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+    color: #ffffff;
     letter-spacing: -0.5px;
 }
 
 .overlay-card p {
-    color: #8e8e93;
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-    line-height: 1.4;
+    color: #8c899e;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
 }
 
 .init-btn {
-    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
     border: none;
-    color: #000;
+    color: #ffffff;
     font-weight: 700;
-    padding: 14px 28px;
-    border-radius: 12px;
+    padding: 16px 32px;
+    border-radius: 14px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 1rem;
     width: 100%;
-    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 25px rgba(168, 85, 247, 0.3);
+    transition: transform 0.1s ease;
 }
 
-/* Header Navigation Layout */
+.init-btn:active { transform: scale(0.98); }
+
+/* Navigation Bar */
 .navbar {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 20px 0;
-    background: rgba(8, 7, 16, 0.7);
-    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #110f22;
+    padding: 22px 0;
+    background: rgba(3, 2, 7, 0.85);
+    backdrop-filter: blur(16px);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     width: 90%;
     display: flex;
@@ -96,20 +100,20 @@ body {
 
 .logo {
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     letter-spacing: 1px;
+    color: #ffffff;
 }
 
-.logo span {
-    color: #00f2fe;
-}
+.logo span { color: #a855f7; }
 
 .system-status {
-    font-size: 0.85rem;
-    background: rgba(46, 204, 113, 0.1);
-    padding: 6px 12px;
+    font-size: 0.8rem;
+    background: rgba(168, 85, 247, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    padding: 6px 14px;
     border-radius: 20px;
-    color: #2ecc71;
+    color: #c084fc;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -117,90 +121,140 @@ body {
 }
 
 .status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #2ecc71;
+    width: 6px;
+    height: 6px;
+    background-color: #a855f7;
     border-radius: 50%;
-    box-shadow: 0 0 8px #2ecc71;
+    box-shadow: 0 0 8px #a855f7;
 }
 
-/* Dashboard Grid Architecture */
-.dashboard-grid {
-    flex: 1;
-    max-width: 1200px;
+/* Horizontal Tabs Navigation Layout */
+.tab-navigation {
+    background: #06050e;
+    border-bottom: 1px solid #110f22;
+    padding: 10px 0;
+}
+
+.tab-container {
+    max-width: 1000px;
+    margin: 0 auto;
     width: 90%;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-/* Tech Grid Cards with Hardware Acceleration */
-.tech-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 30px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translate3d(0,0,0); /* Instantly invokes GPU execution */
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
-.tech-card:hover {
-    border-color: rgba(0, 242, 254, 0.3);
-    transform: translate3d(0, -4px, 0);
-}
+.tab-container::-webkit-scrollbar { display: none; } /* Clear clutter scrollbar flags */
 
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.card-header .icon {
-    font-size: 1.8rem;
-}
-
-.card-header h3 {
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.tweak-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
-}
-
-.tweak-list li {
+.tab-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: #8c899e;
+    padding: 10px 18px;
     font-size: 0.9rem;
-    color: #a0a0a5;
-    line-height: 1.5;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.tweak-list li strong {
+.tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn.active {
+    color: #ffffff;
+    background: #120e25;
+    border-color: #3b2c6f;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Tab Content Wrappers */
+.content-wrapper {
+    max-width: 1000px;
+    margin: 40px auto;
+    width: 90%;
+    flex: 1;
+}
+
+.tab-content {
+    display: none;
+    transform: translate3d(0, 8px, 0); /* Forces GPU compositing Layer */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: translate3d(0,0,0);
+    opacity: 1;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.content-header h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #a855f7;
+    background: rgba(168, 85, 247, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* Optimization Cards styling */
+.tweak-card {
+    background: linear-gradient(180deg, #090714 0%, #06050e 100%);
+    border: 1px solid #110f22;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.tweak-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
     color: #ffffff;
 }
 
-/* Optimization Metrics styling */
-.perf-metric {
-    margin-top: auto;
-    background: rgba(255,255,255,0.03);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #00f2fe;
-    border: 1px dashed rgba(0, 242, 254, 0.2);
+.tweak-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #9b98af;
 }
 
-@keyframes flash {
-    0% { opacity: 0.6; }
-    100% { opacity: 1; }
+/* Diagnostic Code Boxes */
+.code-box {
+    margin-top: 15px;
+    background: #030206;
+    border: 1px solid #16132b;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: #c084fc;
+    overflow-x: auto;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
 }
