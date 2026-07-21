@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexTech | Ultimate Device Optimization</title>
-    <meta name="description" content="High-performance tuning guides for PC, iOS, Android, and Chromebooks.">
-    <!-- Performance Optimization: Low-latency font preconnects -->
+    <title>Aether Tuning | Premium Optimization Hub</title>
+    <meta name="description" content="Next-gen multi-platform latency and hardware optimization dashboard.">
+    <!-- Performance Optimization: High-speed DNS and preconnect hints -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Optimization Activation Overlay (Bypasses Browser Audio Blocks) -->
+    <!-- Optimization Activation Overlay -->
     <div id="engine-overlay" onclick="activateEngine()">
         <div class="overlay-card">
-            <div class="neon-pulse">⚡</div>
-            <h2>Initialize ApexTech Engine</h2>
-            <p>Click to optimize layout & unlock background audio</p>
-            <button class="init-btn">Launch Dashboard</button>
+            <div class="neon-pulse">👾</div>
+            <h2>Aether Tuning Engine</h2>
+            <p>Initialize ultra-low latency profiles and background audio stream.</p>
+            <button class="init-btn">Inject Dashboard</button>
         </div>
     </div>
 
-    <!-- Hidden Audio Core: Preloaded for low-latency playback -->
+    <!-- Hidden Audio Core -->
     <audio id="bg-music" loop preload="auto">
         <source src="https://soundhelix.com" type="audio/mpeg">
     </audio>
@@ -31,75 +31,96 @@
     <!-- Top Navigation Header -->
     <header class="navbar">
         <div class="nav-container">
-            <div class="logo">APEX<span>TECH</span></div>
+            <div class="logo">AETHER<span>TUNING</span></div>
             <div class="system-status">
-                <span class="status-dot"></span> System Status: Optimized
+                <span class="status-dot"></span> Kernel: Active
             </div>
         </div>
     </header>
 
-    <!-- Main Grid Dashboard Container -->
-    <main class="dashboard-grid">
+    <!-- Interactive Navigation Tabs -->
+    <nav class="tab-navigation">
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab(event, 'pc-tweaks')">🖥️ Windows PC</button>
+            <button class="tab-btn" onclick="switchTab(event, 'ios-tweaks')">🍎 iOS / iPhone</button>
+            <button class="tab-btn" onclick="switchTab(event, 'android-tweaks')">🤖 Android</button>
+            <button class="tab-btn" onclick="switchTab(event, 'chrome-tweaks')">💻 Chromebook</button>
+        </div>
+    </nav>
+
+    <!-- Tabbed Content Section -->
+    <main class="content-wrapper">
         
-        <!-- PC Optimization Card -->
-        <section class="tech-card pc-tier">
-            <div class="card-header">
-                <span class="icon">🖥️</span>
-                <h3>Windows PC Tweaks</h3>
+        <!-- PC TWEAKS (Active by Default) -->
+        <section id="pc-tweaks" class="tab-content active">
+            <div class="content-header">
+                <h2>Windows Core Adjustments</h2>
+                <span class="category-badge">Tier 1 Latency</span>
             </div>
-            <ul class="tweak-list">
-                <li><strong>Latency:</strong> Enable MSI-Mode on GPU channels.</li>
-                <li><strong>Debloat:</strong> Strip telemetry background tasks.</li>
-                <li><strong>Power Plan:</strong> Force Ultimate Performance profile.</li>
-            </ul>
-            <div class="perf-metric">FPS Boost: +24%</div>
+            <div class="tweak-card">
+                <h3>Message Signaled Interrupts (MSI)</h3>
+                <p>Switch GPU interrupts to MSI mode to eliminate frame-time micro-stutters during heavy computational execution spikes.</p>
+                <div class="code-box">Registry path: HKLM\SYSTEM\CurrentControlSet\Control\Class\...</div>
+            </div>
+            <div class="tweak-card">
+                <h3>Power Plan Configuration</h3>
+                <p>Force system thread processors out of core parking states by unlocking the native hidden Ultimate Performance profile.</p>
+                <div class="code-box">powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</div>
+            </div>
         </section>
 
-        <!-- iPhone Optimization Card -->
-        <section class="tech-card ios-tier">
-            <div class="card-header">
-                <span class="icon">🍎</span>
-                <h3>iOS / iPhone Tuning</h3>
+        <!-- IOS TWEAKS -->
+        <section id="ios-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>iOS Thermal & Battery Profiles</h2>
+                <span class="category-badge">Battery Saving</span>
             </div>
-            <ul class="tweak-list">
-                <li><strong>RAM Flush:</strong> Force system cache purge.</li>
-                <li><strong>Battery:</strong> Disable Background App Refresh selectively.</li>
-                <li><strong>Display:</strong> Reduce motion for faster UI rendering.</li>
-            </ul>
-            <div class="perf-metric">Battery Drain: -15%</div>
+            <div class="tweak-card">
+                <h3>Select Background Daemons</h3>
+                <p>Disable selective background app refreshes to eliminate systematic polling tasks waking up your core processor cores.</p>
+            </div>
+            <div class="tweak-card">
+                <h3>Animation Buffer Bypass</h3>
+                <p>Enable 'Reduce Motion' options in accessibility settings to bypass heavy SpringBoard UI asset rendering delays completely.</p>
+            </div>
         </section>
 
-        <!-- Android Optimization Card -->
-        <section class="tech-card android-tier">
-            <div class="card-header">
-                <span class="icon">🤖</span>
-                <h3>Android Tuning</h3>
+        <!-- ANDROID TWEAKS -->
+        <section id="android-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>Android Low-Level Tuning</h2>
+                <span class="category-badge">System Responsiveness</span>
             </div>
-            <ul class="tweak-list">
-                <li><strong>DevOptions:</strong> Drop animations from 1.0x to 0.5x.</li>
-                <li><strong>Thermal:</strong> Disable RAM Plus virtual swap partitions.</li>
-                <li><strong>Network:</strong> Force DNS-over-TLS (NextDNS / Cloudflare).</li>
-            </ul>
-            <div class="perf-metric">App Load: 0.2s Faster</div>
+            <div class="tweak-card">
+                <h3>Developer Scale Modifiers</h3>
+                <p>Drop Window, Transition, and Animator scales inside developer options to exactly 0.5x for instantly snappier system responses.</p>
+            </div>
+            <div class="tweak-card">
+                <h3>RAM Plus Swap Removal</h3>
+                <p>Disable virtual storage paging features on modern devices to preserve internal storage read/write performance margins.</p>
+            </div>
         </section>
 
-        <!-- Chromebook Optimization Card -->
-        <section class="tech-card chrome-tier">
-            <div class="card-header">
-                <span class="icon">💻</span>
-                <h3>Chromebook Tweaks</h3>
+        <!-- CHROMEBOOK TWEAKS -->
+        <section id="chrome-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>ChromeOS Flag Optimization</h2>
+                <span class="category-badge">Memory Recovery</span>
             </div>
-            <ul class="tweak-list">
-                <li><strong>Flags:</strong> Toggle GPU-accelerated rasterization.</li>
-                <li><strong>Memory:</strong> Force hyper-aggressive tab discarding.</li>
-                <li><strong>Linux Core:</strong> Optimize container allocation limits.</li>
-            </ul>
-            <div class="perf-metric">RAM Free: +400MB</div>
+            <div class="tweak-card">
+                <h3>GPU-Accelerated Rasterization</h3>
+                <p>Force web canvas drawing pipelines to offload heavy calculations directly onto your onboard integrated graphics chip.</p>
+                <div class="code-box">chrome://flags/#enable-gpu-rasterization</div>
+            </div>
+            <div class="tweak-card">
+                <h3>Aggressive Memory Discarding</h3>
+                <p>Instruct the Chrome platform engine to completely flush inactive background browser instances the millisecond physical memory drops below 15%.</p>
+            </div>
         </section>
 
     </main>
 
-    <!-- Scripting for Hardware-Accelerated Activation -->
+    <!-- High-Performance Interactive Scripts -->
     <script>
         function activateEngine() {
             const overlay = document.getElementById('engine-overlay');
@@ -107,9 +128,21 @@
             setTimeout(() => overlay.remove(), 400);
 
             const music = document.getElementById('bg-music');
-            music.play().catch(err => {
-                console.log("Audio waiting for asset stream verification:", err);
-            });
+            music.play().catch(err => console.log("Audio pipeline loaded:", err));
+        }
+
+        function switchTab(event, tabId) {
+            // Hide all tab content containers instantly
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active classes from all header buttons
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected target container and highlight active click button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
         }
     </script>
 </body>
