@@ -29,70 +29,6 @@
             flex-direction: column;
         }
 
-        /* Engine Activation Screen */
-        #engine-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #030207;
-            z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .overlay-card {
-            background: linear-gradient(135deg, #090714 0%, #05040a 100%);
-            border: 1px solid #1a1635;
-            padding: 40px;
-            border-radius: 24px;
-            text-align: center;
-            max-width: 420px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .neon-pulse {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px #bc34fa);
-            animation: bounce 2s infinite alternate;
-        }
-
-        .overlay-card h2 {
-            font-weight: 800;
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-
-        .overlay-card p {
-            color: #8c899e;
-            font-size: 0.95rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
-        }
-
-        .init-btn {
-            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-            border: none;
-            color: #ffffff;
-            font-weight: 700;
-            padding: 16px 32px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            box-shadow: 0 4px 25px rgba(168, 85, 247, 0.3);
-            transition: transform 0.1s ease;
-        }
-
-        .init-btn:active { transform: scale(0.98); }
-
         /* Hidden Background YouTube Player Layer */
         #yt-audio-container {
             position: absolute;
@@ -282,17 +218,7 @@
         }
     </style>
 </head>
-<body>
-
-    <!-- Splash Screen Unlock Engine -->
-    <div id="engine-overlay" onclick="activateEngine()">
-        <div class="overlay-card">
-            <div class="neon-pulse">👾</div>
-            <h2>Aether Tuning Engine</h2>
-            <p>Initialize ultra-low latency profiles and background audio stream.</p>
-            <button class="init-btn">Inject Dashboard</button>
-        </div>
-    </div>
+<body onclick="unmuteAudio()">
 
     <!-- Target Div for YouTube JavaScript API Integration -->
     <div id="yt-audio-container">
@@ -328,5 +254,50 @@
                 <h3>Message Signaled Interrupts (MSI)</h3>
                 <p>Switch GPU interrupts to MSI mode to eliminate frame-time micro-stutters during heavy computational execution spikes.</p>
                 <div class="code-box">Registry path: HKLM\SYSTEM\CurrentControlSet\Control\Class\...</div>
+            </div>
+            <div class="tweak-card">
+                <h3>Power Plan Configuration</h3>
+                <p>Force system thread processors out of core parking states by unlocking the native hidden Ultimate Performance profile.</p>
+                <div class="code-box">powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</div>
+            </div>
+        </section>
+
+        <!-- IOS TWEAKS -->
+        <section id="ios-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>iOS Thermal & Battery Profiles</h2>
+                <span class="category-badge">Battery Saving</span>
+            </div>
+            <div class="tweak-card">
+                <h3>Select Background Daemons</h3>
+                <p>Disable selective background app refreshes to eliminate systematic polling tasks waking up your core processor cores.</p>
+            </div>
+            <div class="tweak-card">
+                <h3>Animation Buffer Bypass</h3>
+                <p>Enable 'Reduce Motion' options in accessibility settings to bypass heavy SpringBoard UI asset rendering delays completely.</p>
+            </div>
+        </section>
+
+        <!-- ANDROID TWEAKS -->
+        <section id="android-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>Android Low-Level Tuning</h2>
+                <span class="category-badge">System Responsiveness</span>
+            </div>
+            <div class="tweak-card">
+                <h3>Developer Scale Modifiers</h3>
+                <p>Drop Window, Transition, and Animator scales inside developer options to exactly 0.5x for instantly snappier system responses.</p>
+            </div>
+            <div class="tweak-card">
+                <h3>RAM Plus Swap Removal</h3>
+                <p>Disable virtual storage paging features on modern devices to preserve internal storage read/write performance margins.</p>
+            </div>
+        </section>
+
+        <!-- CHROMEBOOK TWEAKS -->
+        <section id="chrome-tweaks" class="tab-content">
+            <div class="content-header">
+                <h2>ChromeOS Flag Optimization</h2>
+                <span class="category-badge">Memory Recovery</span>
             </div>
             <div class="tweak-card">
