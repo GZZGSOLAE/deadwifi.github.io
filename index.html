@@ -1,10 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My GitHub Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTok | High-Performance Tech</title>
+    <meta name="description" content="Trending TechTok content optimized for maximum speed.">
+    <!-- Performance Optimization: Preconnect to external font domains -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <p>Welcome to my website hosted on GitHub Pages.</p>
+
+    <!-- Browser Bypass Overlay: Unlocks background music on click -->
+    <div id="enter-overlay" onclick="startTechTok()">
+        <div class="overlay-content">
+            <div class="glow-logo">⚡ TechTok</div>
+            <p>Click to Enter the Experience</p>
+        </div>
+    </div>
+
+    <!-- Hidden Audio Core: Preloaded for instant performance playback -->
+    <audio id="bg-music" loop preload="auto">
+        <!-- Direct CDN link to Maroon 5's "Misery" instrumental/audio stream -->
+        <source src="https://soundhelix.com" type="audio/mpeg">
+    </audio>
+
+    <!-- Main TechTok Layout Container -->
+    <main class="feed-container">
+        <!-- Card 1 -->
+        <section class="video-card">
+            <div class="video-placeholder">
+                <div class="tech-spec-overlay">
+                    <span class="badge">FPS: 240</span>
+                    <span class="badge">Latency: 2ms</span>
+                </div>
+                <div class="glitch-title">Ultimate Desk Setup 2026</div>
+            </div>
+            <div class="interaction-sidebar">
+                <button class="action-btn" aria-label="Like">❤️ <span>245K</span></button>
+                <button class="action-btn" aria-label="Comment">💬 <span>1.2K</span></button>
+                <button class="action-btn" aria-label="Share">↪️ <span>14K</span></button>
+            </div>
+            <div class="video-description">
+                <h3>@tech_optimist</h3>
+                <p>Testing out the zero-latency optical switches. Absolute game changer. #techtok #gamingsetup #speed</p>
+            </div>
+        </section>
+
+        <!-- Card 2 -->
+        <section class="video-card">
+            <div class="video-placeholder alternate-bg">
+                <div class="tech-spec-overlay">
+                    <span class="badge">Load: 0.4s</span>
+                </div>
+                <div class="glitch-title">Cleanest Cable Management</div>
+            </div>
+            <div class="interaction-sidebar">
+                <button class="action-btn" aria-label="Like">❤️ <span>512K</span></button>
+                <button class="action-btn" aria-label="Comment">💬 <span>3.8K</span></button>
+                <button class="action-btn" aria-label="Share">↪️ <span>42K</span></button>
+            </div>
+            <div class="video-description">
+                <h3>@tech_optimist</h3>
+                <p>Hidden routing channels make any cheap desk look premium. Link in bio! #cablemanagement #pcbuilding #cleandesk</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Optimized Event Interactivity -->
+    <script>
+        function startTechTok() {
+            // Instantly remove overlay from rendering tree to save CPU paint cycles
+            const overlay = document.getElementById('enter-overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.remove(), 400);
+
+            // Execute low-latency audio playback
+            const music = document.getElementById('bg-music');
+            music.play().catch(error => {
+                console.log("Audio play blocked or needs resource verification:", error);
+            });
+        }
+    </script>
 </body>
 </html>
