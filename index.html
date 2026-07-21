@@ -3,84 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechTok | High-Performance Tech</title>
-    <meta name="description" content="Trending TechTok content optimized for maximum speed.">
-    <!-- Performance Optimization: Preconnect to external font domains -->
+    <title>ApexTech | Ultimate Device Optimization</title>
+    <meta name="description" content="High-performance tuning guides for PC, iOS, Android, and Chromebooks.">
+    <!-- Performance Optimization: Low-latency font preconnects -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Browser Bypass Overlay: Unlocks background music on click -->
-    <div id="enter-overlay" onclick="startTechTok()">
-        <div class="overlay-content">
-            <div class="glow-logo">⚡ TechTok</div>
-            <p>Click to Enter the Experience</p>
+    <!-- Optimization Activation Overlay (Bypasses Browser Audio Blocks) -->
+    <div id="engine-overlay" onclick="activateEngine()">
+        <div class="overlay-card">
+            <div class="neon-pulse">⚡</div>
+            <h2>Initialize ApexTech Engine</h2>
+            <p>Click to optimize layout & unlock background audio</p>
+            <button class="init-btn">Launch Dashboard</button>
         </div>
     </div>
 
-    <!-- Hidden Audio Core: Preloaded for instant performance playback -->
+    <!-- Hidden Audio Core: Preloaded for low-latency playback -->
     <audio id="bg-music" loop preload="auto">
-        <!-- Direct CDN link to Maroon 5's "Misery" instrumental/audio stream -->
         <source src="https://soundhelix.com" type="audio/mpeg">
     </audio>
 
-    <!-- Main TechTok Layout Container -->
-    <main class="feed-container">
-        <!-- Card 1 -->
-        <section class="video-card">
-            <div class="video-placeholder">
-                <div class="tech-spec-overlay">
-                    <span class="badge">FPS: 240</span>
-                    <span class="badge">Latency: 2ms</span>
-                </div>
-                <div class="glitch-title">Ultimate Desk Setup 2026</div>
+    <!-- Top Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">APEX<span>TECH</span></div>
+            <div class="system-status">
+                <span class="status-dot"></span> System Status: Optimized
             </div>
-            <div class="interaction-sidebar">
-                <button class="action-btn" aria-label="Like">❤️ <span>245K</span></button>
-                <button class="action-btn" aria-label="Comment">💬 <span>1.2K</span></button>
-                <button class="action-btn" aria-label="Share">↪️ <span>14K</span></button>
+        </div>
+    </header>
+
+    <!-- Main Grid Dashboard Container -->
+    <main class="dashboard-grid">
+        
+        <!-- PC Optimization Card -->
+        <section class="tech-card pc-tier">
+            <div class="card-header">
+                <span class="icon">🖥️</span>
+                <h3>Windows PC Tweaks</h3>
             </div>
-            <div class="video-description">
-                <h3>@tech_optimist</h3>
-                <p>Testing out the zero-latency optical switches. Absolute game changer. #techtok #gamingsetup #speed</p>
-            </div>
+            <ul class="tweak-list">
+                <li><strong>Latency:</strong> Enable MSI-Mode on GPU channels.</li>
+                <li><strong>Debloat:</strong> Strip telemetry background tasks.</li>
+                <li><strong>Power Plan:</strong> Force Ultimate Performance profile.</li>
+            </ul>
+            <div class="perf-metric">FPS Boost: +24%</div>
         </section>
 
-        <!-- Card 2 -->
-        <section class="video-card">
-            <div class="video-placeholder alternate-bg">
-                <div class="tech-spec-overlay">
-                    <span class="badge">Load: 0.4s</span>
-                </div>
-                <div class="glitch-title">Cleanest Cable Management</div>
+        <!-- iPhone Optimization Card -->
+        <section class="tech-card ios-tier">
+            <div class="card-header">
+                <span class="icon">🍎</span>
+                <h3>iOS / iPhone Tuning</h3>
             </div>
-            <div class="interaction-sidebar">
-                <button class="action-btn" aria-label="Like">❤️ <span>512K</span></button>
-                <button class="action-btn" aria-label="Comment">💬 <span>3.8K</span></button>
-                <button class="action-btn" aria-label="Share">↪️ <span>42K</span></button>
-            </div>
-            <div class="video-description">
-                <h3>@tech_optimist</h3>
-                <p>Hidden routing channels make any cheap desk look premium. Link in bio! #cablemanagement #pcbuilding #cleandesk</p>
-            </div>
+            <ul class="tweak-list">
+                <li><strong>RAM Flush:</strong> Force system cache purge.</li>
+                <li><strong>Battery:</strong> Disable Background App Refresh selectively.</li>
+                <li><strong>Display:</strong> Reduce motion for faster UI rendering.</li>
+            </ul>
+            <div class="perf-metric">Battery Drain: -15%</div>
         </section>
+
+        <!-- Android Optimization Card -->
+        <section class="tech-card android-tier">
+            <div class="card-header">
+                <span class="icon">🤖</span>
+                <h3>Android Tuning</h3>
+            </div>
+            <ul class="tweak-list">
+                <li><strong>DevOptions:</strong> Drop animations from 1.0x to 0.5x.</li>
+                <li><strong>Thermal:</strong> Disable RAM Plus virtual swap partitions.</li>
+                <li><strong>Network:</strong> Force DNS-over-TLS (NextDNS / Cloudflare).</li>
+            </ul>
+            <div class="perf-metric">App Load: 0.2s Faster</div>
+        </section>
+
+        <!-- Chromebook Optimization Card -->
+        <section class="tech-card chrome-tier">
+            <div class="card-header">
+                <span class="icon">💻</span>
+                <h3>Chromebook Tweaks</h3>
+            </div>
+            <ul class="tweak-list">
+                <li><strong>Flags:</strong> Toggle GPU-accelerated rasterization.</li>
+                <li><strong>Memory:</strong> Force hyper-aggressive tab discarding.</li>
+                <li><strong>Linux Core:</strong> Optimize container allocation limits.</li>
+            </ul>
+            <div class="perf-metric">RAM Free: +400MB</div>
+        </section>
+
     </main>
 
-    <!-- Optimized Event Interactivity -->
+    <!-- Scripting for Hardware-Accelerated Activation -->
     <script>
-        function startTechTok() {
-            // Instantly remove overlay from rendering tree to save CPU paint cycles
-            const overlay = document.getElementById('enter-overlay');
+        function activateEngine() {
+            const overlay = document.getElementById('engine-overlay');
             overlay.style.opacity = '0';
             setTimeout(() => overlay.remove(), 400);
 
-            // Execute low-latency audio playback
             const music = document.getElementById('bg-music');
-            music.play().catch(error => {
-                console.log("Audio play blocked or needs resource verification:", error);
+            music.play().catch(err => {
+                console.log("Audio waiting for asset stream verification:", err);
             });
         }
     </script>
