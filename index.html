@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Integrated Cyber-Purple CSS Engine -->
     <style>
@@ -78,6 +79,13 @@
             align-items: center;
             gap: 8px;
             font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .system-status:hover {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.4);
         }
 
         .status-dot {
@@ -86,6 +94,15 @@
             background-color: #a855f7;
             border-radius: 50%;
             box-shadow: 0 0 8px #a855f7;
+        }
+
+        .status-dot.playing {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 8px #a855f7; }
+            50% { box-shadow: 0 0 15px #a855f7, 0 0 25px #a855f7; }
         }
 
         /* Tabs Interface Design */
@@ -228,8 +245,9 @@
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">AETHER<span>TUNING</span></div>
-            <div class="system-status">
-                <span class="status-dot"></span> Kernel: Active
+            <div class="system-status" onclick="toggleMusic(event)">
+                <span class="status-dot" id="status-indicator"></span>
+                <span id="music-status">Music: OFF</span>
             </div>
         </div>
     </header>
@@ -301,3 +319,113 @@
                 <span class="category-badge">Memory Recovery</span>
             </div>
             <div class="tweak-card">
+                <h3>Tab Suspender Extensions</h3>
+                <p>Deploy automatic tab freezing utilities to conserve memory footprint on devices with limited RAM configurations.</p>
+            </div>
+            <div class="tweak-card">
+                <h3>Linux Container Optimization</h3>
+                <p>Adjust Crostini container resource allocations to maximize available system performance during concurrent operations.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        let player;
+        let isPlaying = false;
+
+        // YouTube Video ID - replace with your desired music video
+        const MUSIC_VIDEO_ID = 'jNQXAC9IVRw'; // Default: YouTube test video
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '1',
+                width: '1',
+                videoId: MUSIC_VIDEO_ID,
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                },
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playsinline': 1
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log('YouTube player ready');
+        }
+
+        function onPlayerStateChange(event) {
+            const statusDot = document.getElementById('status-indicator');
+            const musicStatus = document.getElementById('music-status');
+            
+            if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                statusDot.classList.add('playing');
+                musicStatus.textContent = 'Music: ON';
+            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                isPlaying = false;
+                statusDot.classList.remove('playing');
+                musicStatus.textContent = 'Music: OFF';
+            }
+        }
+
+        function toggleMusic(event) {
+            event.stopPropagation();
+            
+            if (!player) {
+                console.log('Player not ready yet');
+                return;
+            }
+
+            if (isPlaying) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        }
+
+        function unmuteAudio() {
+            if (player && typeof player.unMute === 'function') {
+                player.unMute();
+            }
+        }
+
+        function switchTab(event, tabId) {
+            event.preventDefault();
+            
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab content
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+
+            // Highlight the clicked button
+            event.target.classList.add('active');
+        }
+
+        // Initialize the first tab as active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded - YouTube API will initialize');
+        });
+    </script>
+</body>
+</html>
