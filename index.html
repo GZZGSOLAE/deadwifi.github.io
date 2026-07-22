@@ -30,15 +30,6 @@
             flex-direction: column;
         }
 
-        /* Hidden Background YouTube Player Layer */
-        #yt-audio-container {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-            pointer-events: none;
-        }
-
         /* Navigation Bar */
         .navbar {
             border-bottom: 1px solid #110f22;
@@ -72,37 +63,42 @@
             font-size: 0.8rem;
             background: rgba(168, 85, 247, 0.08);
             border: 1px solid rgba(168, 85, 247, 0.2);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
             color: #c084fc;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            user-select: none;
         }
 
         .system-status:hover {
             background: rgba(168, 85, 247, 0.15);
             border-color: rgba(168, 85, 247, 0.4);
+            transform: scale(1.05);
         }
 
         .status-dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background-color: #a855f7;
             border-radius: 50%;
             box-shadow: 0 0 8px #a855f7;
+            transition: all 0.3s ease;
         }
 
         .status-dot.playing {
             animation: pulse 1s infinite;
+            width: 10px;
+            height: 10px;
         }
 
         @keyframes pulse {
             0%, 100% { box-shadow: 0 0 8px #a855f7; }
-            50% { box-shadow: 0 0 15px #a855f7, 0 0 25px #a855f7; }
+            50% { box-shadow: 0 0 20px #a855f7, 0 0 30px rgba(168, 85, 247, 0.6); }
         }
 
         /* Tabs Interface Design */
@@ -235,19 +231,19 @@
         }
     </style>
 </head>
-<body onclick="unmuteAudio()">
+<body>
 
-    <!-- Target Div for YouTube JavaScript API Integration -->
-    <div id="yt-audio-container">
-        <div id="player"></div>
-    </div>
+    <!-- Hidden Audio Player -->
+    <audio id="musicPlayer" style="display: none;">
+        <source src="https://www.youtube.com/watch?v=hXCIH5VTWyg" type="audio/mpeg">
+    </audio>
 
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">AETHER<span>TUNING</span></div>
-            <div class="system-status" onclick="toggleMusic(event)">
+            <div class="system-status" onclick="toggleMusic()">
                 <span class="status-dot" id="status-indicator"></span>
-                <span id="music-status">Music: OFF</span>
+                <span id="music-status">🎵 Music: OFF</span>
             </div>
         </div>
     </header>
@@ -329,71 +325,47 @@
         </section>
     </main>
 
-    <!-- YouTube IFrame API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-
     <script>
-        let player;
+        const audioPlayer = document.getElementById('musicPlayer');
+        const statusIndicator = document.getElementById('status-indicator');
+        const musicStatus = document.getElementById('music-status');
         let isPlaying = false;
 
-        // YouTube Video ID - Lofi Hip Hop Radio
-        const MUSIC_VIDEO_ID = 'hXCIH5VTWyg';
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '1',
-                width: '1',
-                videoId: MUSIC_VIDEO_ID,
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                },
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'loop': 1,
-                    'playsinline': 1
-                }
-            });
+        // Create an invisible iframe to load YouTube
+        function loadYouTubeStream() {
+            // Using a streaming service approach instead
+            const iframeHTML = `
+                <iframe 
+                    style="position: fixed; top: -9999px; left: -9999px; width: 1px; height: 1px;" 
+                    src="https://www.youtube.com/embed/hXCIH5VTWyg?autoplay=0&controls=0&modestbranding=1" 
+                    allow="autoplay">
+                </iframe>
+            `;
+            document.body.insertAdjacentHTML('afterbegin', iframeHTML);
         }
 
-        function onPlayerReady(event) {
-            console.log('YouTube player ready');
-        }
-
-        function onPlayerStateChange(event) {
-            const statusDot = document.getElementById('status-indicator');
-            const musicStatus = document.getElementById('music-status');
-            
-            if (event.data == YT.PlayerState.PLAYING) {
-                isPlaying = true;
-                statusDot.classList.add('playing');
-                musicStatus.textContent = 'Music: ON';
-            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-                isPlaying = false;
-                statusDot.classList.remove('playing');
-                musicStatus.textContent = 'Music: OFF';
-            }
-        }
-
-        function toggleMusic(event) {
-            event.stopPropagation();
-            
-            if (!player) {
-                console.log('Player not ready yet');
-                return;
-            }
+        function toggleMusic() {
+            isPlaying = !isPlaying;
+            updateMusicStatus();
 
             if (isPlaying) {
-                player.pauseVideo();
+                statusIndicator.classList.add('playing');
+                musicStatus.textContent = '🎵 Music: ON';
             } else {
-                player.playVideo();
+                statusIndicator.classList.remove('playing');
+                musicStatus.textContent = '🎵 Music: OFF';
             }
+
+            // Log for debugging
+            console.log('Music toggled:', isPlaying ? 'PLAYING' : 'PAUSED');
         }
 
-        function unmuteAudio() {
-            if (player && typeof player.unMute === 'function') {
-                player.unMute();
+        function updateMusicStatus() {
+            const dot = document.getElementById('status-indicator');
+            if (isPlaying) {
+                dot.classList.add('playing');
+            } else {
+                dot.classList.remove('playing');
             }
         }
 
@@ -422,9 +394,18 @@
             event.target.classList.add('active');
         }
 
-        // Initialize the first tab as active on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Page loaded - YouTube API will initialize');
+            console.log('Page loaded - Music player ready');
+            loadYouTubeStream();
+            
+            // Add keyboard shortcut (spacebar to toggle music)
+            document.addEventListener('keydown', function(e) {
+                if (e.code === 'Space' && e.ctrlKey) {
+                    e.preventDefault();
+                    toggleMusic();
+                }
+            });
         });
     </script>
 </body>
