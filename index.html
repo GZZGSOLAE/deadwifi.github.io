@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VoidedV1 | Premium Minecraft Client</title>
-    <meta name="description" content="VoidedV1 - Premium Click GUI Minecraft Client for 1.21.11 | Fabric API">
+    <title>WebForge | Free AI Website Maker</title>
+    <meta name="description" content="Create stunning websites with AI assistance. Auto-deploy to GitHub Pages with custom domains.">
     
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
@@ -53,25 +53,7 @@
             100% { transform: translateY(-100vh) translateX(100px) rotateZ(360deg); opacity: 0; }
         }
 
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(26, 26, 62, 0.5);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(168, 85, 247, 0.6);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(168, 85, 247, 0.8);
-        }
-
-        /* Main Container */
+        /* Container */
         .container {
             position: relative;
             z-index: 10;
@@ -105,70 +87,52 @@
             text-transform: uppercase;
         }
 
-        .version-info {
+        .auth-section {
             display: flex;
             gap: 12px;
             align-items: center;
         }
 
-        .version-badge {
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid rgba(168, 85, 247, 0.4);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #a855f7;
-            transition: all 0.3s ease;
-        }
-
-        .version-badge:hover {
-            background: rgba(168, 85, 247, 0.25);
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
-        }
-
-        .music-toggle {
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.4);
-            padding: 10px 16px;
+        .auth-btn {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
             font-weight: 700;
-            color: #6366f1;
             transition: all 0.3s ease;
-            user-select: none;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .music-toggle:hover {
-            background: rgba(99, 102, 241, 0.25);
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        .auth-btn:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            transform: translateY(-2px);
         }
 
-        .music-dot {
-            width: 8px;
-            height: 8px;
-            background: #6366f1;
+        .user-profile {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            box-shadow: 0 0 8px #6366f1;
-            transition: all 0.3s ease;
+            background: rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .music-dot.playing {
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 8px #6366f1; }
-            50% { box-shadow: 0 0 20px #6366f1, 0 0 30px rgba(99, 102, 241, 0.6); }
-        }
-
-        /* Main Content Area */
+        /* Main Content */
         .main-content {
             display: flex;
             flex: 1;
@@ -179,7 +143,7 @@
             width: 100%;
         }
 
-        /* Left Sidebar - Module Categories */
+        /* Left Sidebar - Templates */
         .sidebar {
             width: 280px;
             background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
@@ -205,13 +169,13 @@
             border-bottom: 1px solid #2d1b5e;
         }
 
-        .category-list {
+        .template-list {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .category-btn {
+        .template-btn {
             background: rgba(168, 85, 247, 0.08);
             border: 1.5px solid rgba(168, 85, 247, 0.2);
             color: #9b98af;
@@ -225,35 +189,36 @@
             font-size: 0.85rem;
         }
 
-        .category-btn:hover {
+        .template-btn:hover {
             background: rgba(168, 85, 247, 0.15);
             border-color: rgba(168, 85, 247, 0.4);
             color: #ffffff;
         }
 
-        .category-btn.active {
+        .template-btn.active {
             background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(99, 102, 241, 0.15) 100%);
             border-color: #a855f7;
             color: #a855f7;
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
         }
 
-        /* Center Area - Module Grid */
-        .modules-area {
+        /* Center Area - Editor */
+        .editor-area {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        .section-header {
+        .editor-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2d1b5e;
         }
 
-        .section-title {
+        .editor-title {
             font-size: 1.5rem;
             font-weight: 800;
             text-transform: uppercase;
@@ -261,215 +226,9 @@
             color: #ffffff;
         }
 
-        .module-count {
-            background: rgba(168, 85, 247, 0.15);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #a855f7;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 16px;
-            width: 100%;
-        }
-
-        /* Module Card */
-        .module-card {
-            background: linear-gradient(135deg, rgba(10, 7, 20, 0.8) 0%, rgba(15, 10, 46, 0.8) 100%);
-            border: 1.5px solid #2d1b5e;
-            border-radius: 12px;
-            padding: 18px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .module-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
-            transition: left 0.5s ease;
-            pointer-events: none;
-        }
-
-        .module-card:hover::before {
-            left: 100%;
-        }
-
-        .module-card:hover {
-            border-color: #a855f7;
-            background: linear-gradient(135deg, rgba(10, 7, 20, 0.95) 0%, rgba(15, 10, 46, 0.95) 100%);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
-            transform: translateY(-3px);
-        }
-
-        .module-card.active {
-            border-color: #a855f7;
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(99, 102, 241, 0.1) 100%);
-            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.1), 0 8px 25px rgba(168, 85, 247, 0.3);
-        }
-
-        .module-header {
+        .editor-actions {
             display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 12px;
-        }
-
-        .module-name {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .module-toggle {
-            width: 32px;
-            height: 18px;
-            background: rgba(168, 85, 247, 0.2);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            border-radius: 20px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .module-toggle::after {
-            content: '';
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: #8c899e;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .module-toggle.enabled {
-            background: rgba(168, 85, 247, 0.4);
-            border-color: #a855f7;
-        }
-
-        .module-toggle.enabled::after {
-            background: #a855f7;
-            transform: translateX(14px);
-            box-shadow: 0 0 8px #a855f7;
-        }
-
-        .module-desc {
-            font-size: 0.9rem;
-            color: #9b98af;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        /* Right Sidebar - Info Panel */
-        .info-panel {
-            width: 320px;
-            background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
-            border: 1.5px solid #2d1b5e;
-            border-radius: 16px;
-            padding: 24px;
-            height: fit-content;
-            position: sticky;
-            top: 100px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        .info-title {
-            font-size: 1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #a855f7;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #2d1b5e;
-        }
-
-        .info-section {
-            margin-bottom: 24px;
-        }
-
-        .info-label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #6366f1;
-            margin-bottom: 8px;
-        }
-
-        .info-content {
-            font-size: 0.95rem;
-            color: #b4a5d6;
-            line-height: 1.6;
-        }
-
-        .info-badge {
-            display: inline-block;
-            background: rgba(99, 102, 241, 0.15);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #6366f1;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-top: 16px;
-        }
-
-        .stat-item {
-            background: rgba(168, 85, 247, 0.08);
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #a855f7;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: #8c899e;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid #2d1b5e;
         }
 
         .action-btn {
@@ -502,27 +261,228 @@
             box-shadow: 0 8px 20px rgba(168, 85, 247, 0.2);
         }
 
-        /* Compatible Clients */
-        .clients-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 12px;
+        /* Preview Area */
+        .preview-container {
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.8) 0%, rgba(15, 10, 46, 0.8) 100%);
+            border: 1.5px solid #2d1b5e;
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 400px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        .client-item {
+        .preview-title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .preview-desc {
+            color: #9b98af;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .preview-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Right Sidebar - AI Assistant */
+        .ai-panel {
+            width: 320px;
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
+            border: 1.5px solid #2d1b5e;
+            border-radius: 16px;
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-title {
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a855f7;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2d1b5e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ai-icon {
+            font-size: 1.2rem;
+        }
+
+        .ai-input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .ai-textarea {
             background: rgba(99, 102, 241, 0.08);
             border: 1px solid rgba(99, 102, 241, 0.2);
-            padding: 10px;
             border-radius: 8px;
+            padding: 12px;
+            color: #e2e1e9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-textarea:focus {
+            outline: none;
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .ai-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            border: none;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .ai-btn:hover {
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .ai-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .ai-suggestion {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-size: 0.85rem;
             color: #b4a5d6;
         }
 
-        .client-item strong {
-            color: #6366f1;
+        .ai-suggestion:hover {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: #a855f7;
+            color: #a855f7;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.95) 0%, rgba(15, 10, 46, 0.95) 100%);
+            border: 1.5px solid #2d1b5e;
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
             text-transform: uppercase;
-            font-size: 0.75rem;
+        }
+
+        .modal-input {
+            width: 100%;
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: #e2e1e9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: #a855f7;
+            background: rgba(168, 85, 247, 0.1);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn.primary {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            color: #ffffff;
+        }
+
+        .modal-btn.primary:hover {
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .modal-btn.secondary {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+        }
+
+        .modal-btn.secondary:hover {
+            background: rgba(168, 85, 247, 0.15);
         }
 
         /* Responsive */
@@ -531,14 +491,10 @@
                 flex-direction: column;
             }
 
-            .sidebar, .info-panel {
+            .sidebar, .ai-panel {
                 width: 100%;
                 position: static;
                 max-height: none;
-            }
-
-            .modules-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
@@ -548,13 +504,18 @@
                 gap: 12px;
             }
 
-            .section-title {
+            .editor-title {
                 font-size: 1.2rem;
             }
 
-            .modules-grid {
-                grid-template-columns: 1fr;
+            .main-content {
+                padding: 12px;
+                gap: 12px;
             }
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
@@ -567,138 +528,151 @@
     <div class="container">
         <!-- Top Bar -->
         <div class="topbar">
-            <div class="logo">VoidedV1</div>
-            <div class="version-info">
-                <div class="version-badge">Minecraft 1.21.11</div>
-                <div class="version-badge">Fabric API 1.21.11</div>
-                <div class="music-toggle" onclick="toggleMusic()">
-                    <span class="music-dot" id="music-dot"></span>
-                    <span id="music-text">🎵 Music</span>
+            <div class="logo">🚀 WebForge</div>
+            <div class="auth-section">
+                <button class="auth-btn" id="githubAuthBtn" onclick="authenticateGitHub()">
+                    <span>🐙</span> Login with GitHub
+                </button>
+                <div class="user-profile" id="userProfile" style="display: none;">
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <div id="userName"></div>
                 </div>
             </div>
         </div>
 
         <!-- Main Content -->
         <div class="main-content">
-            <!-- Sidebar -->
+            <!-- Sidebar - Templates -->
             <div class="sidebar">
-                <div class="sidebar-title">Modules</div>
-                <div class="category-list" id="categories"></div>
+                <div class="sidebar-title">Templates</div>
+                <div class="template-list" id="templates"></div>
             </div>
 
-            <!-- Modules Area -->
-            <div class="modules-area">
-                <div class="section-header">
+            <!-- Editor Area -->
+            <div class="editor-area">
+                <div class="editor-header">
                     <div>
-                        <h2 class="section-title" id="section-title">Combat</h2>
+                        <h2 class="editor-title" id="editorTitle">Portfolio</h2>
                     </div>
-                    <div class="module-count" id="module-count">6 Modules</div>
+                    <div class="editor-actions">
+                        <button class="action-btn secondary" onclick="previewWebsite()">👁️ Preview</button>
+                        <button class="action-btn" onclick="deployWebsite()">🚀 Deploy</button>
+                    </div>
                 </div>
-                <div class="modules-grid" id="modules-grid"></div>
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-title">Welcome to Your Website</div>
+                    <div class="preview-desc">Select a template to get started building your amazing website with AI assistance.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">Learn More</button>
+                        <button class="action-btn secondary">Get Started</button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Info Panel -->
-            <div class="info-panel">
-                <div class="info-title">Information</div>
-
-                <div class="info-section">
-                    <div class="info-label">Version</div>
-                    <div class="info-content">
-                        <div style="margin-bottom: 8px;">
-                            <div class="info-badge">MC 1.21.11</div>
-                        </div>
-                        <div style="margin-bottom: 8px;">
-                            <div class="info-badge">Fabric API</div>
-                        </div>
-                    </div>
+            <!-- Right Sidebar - AI Assistant -->
+            <div class="ai-panel">
+                <div class="ai-title">
+                    <span class="ai-icon">✨</span>
+                    AI Assistant
                 </div>
-
-                <div class="info-section">
-                    <div class="info-label">Compatible Clients</div>
-                    <div class="clients-list">
-                        <div class="client-item"><strong>✓</strong> Minecraft Launcher</div>
-                        <div class="client-item"><strong>✓</strong> Feather Client</div>
-                        <div class="client-item"><strong>✓</strong> Lunar Client</div>
-                        <div class="client-item" style="color: #8c899e; font-size: 0.75rem; margin-top: 8px;">*Not affiliated or sponsored by any client</div>
-                    </div>
+                <div class="ai-input-section">
+                    <textarea class="ai-textarea" id="aiPrompt" placeholder="Tell the AI what you want... 'Add a hero section with a call-to-action button'"></textarea>
+                    <button class="ai-btn" onclick="askAI()">Generate</button>
                 </div>
-
-                <div class="info-section">
-                    <div class="info-label">Statistics</div>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">28</div>
-                            <div class="stat-label">Modules</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">5</div>
-                            <div class="stat-label">Categories</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="action-btn" onclick="joinDiscord()">
-                        💜 Discord Server
-                    </button>
-                    <button class="action-btn secondary" onclick="downloadClient()">
-                        ⬇️ Download
-                    </button>
-                </div>
+                <div class="ai-suggestions" id="aiSuggestions"></div>
             </div>
         </div>
     </div>
 
-    <!-- Hidden Audio -->
-    <audio id="musicPlayer" style="display: none;">
-        <source src="https://www.youtube.com/watch?v=hXCIH5VTWyg" type="audio/mpeg">
-    </audio>
+    <!-- Deploy Modal -->
+    <div class="modal" id="deployModal">
+        <div class="modal-content">
+            <div class="modal-header">Deploy Your Website</div>
+            <input type="text" class="modal-input" id="repoName" placeholder="Repository name (e.g., my-portfolio)">
+            <input type="text" class="modal-input" id="siteName" placeholder="Site name (e.g., My Portfolio)">
+            <div class="modal-buttons">
+                <button class="modal-btn primary" onclick="createAndDeploy()">Create & Deploy</button>
+                <button class="modal-btn secondary" onclick="closeModal('deployModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Module Data
-        const allModules = {
-            combat: [
-                { name: 'AutoTotem', desc: 'Automatic totem activation & offhand placement' },
-                { name: 'Criticals', desc: 'Enhanced critical hit detection boost' },
-                { name: 'FightBot', desc: 'Automated combat with target tracking' },
-                { name: 'KeyPearl', desc: 'Quick pearl usage optimization' },
-                { name: 'KillAura', desc: 'Range-based attack automation' },
-                { name: 'Reach', desc: 'Extended reach multiplier' }
-            ],
-            render: [
-                { name: 'ArmorHUD', desc: 'Armor durability display system' },
-                { name: 'BlockHighlight', desc: 'Block outline visualization' },
-                { name: 'Chams', desc: 'Entity wallhack system' },
-                { name: 'CustomNameTags', desc: 'Custom player name rendering' },
-                { name: 'DonutMinesESP', desc: 'Mine block detection' },
-                { name: 'FullBright', desc: 'Brightness enhancement utility' },
-                { name: 'HitPartials', desc: 'Hit damage indicators' },
-                { name: 'NoRender', desc: 'Selective entity hiding' }
-            ],
-            movement: [
-                { name: 'Fly', desc: 'Creative flight mode enabled' },
-                { name: 'InfiniteJump', desc: 'Unlimited jump height' },
-                { name: 'LongJump', desc: 'Extended jump distance' },
-                { name: 'Parkour', desc: 'Automated parkour assist' },
-                { name: 'ReverseStep', desc: 'Backward stepping enabled' },
-                { name: 'Speed', desc: 'Movement velocity boost' },
-                { name: 'Sprint', desc: 'Continuous sprint activation' },
-                { name: 'Step', desc: 'Auto block stepping' }
-            ],
-            player: [
-                { name: 'FastPlace', desc: 'Rapid block placement' },
-                { name: 'NoFall', desc: 'Fall damage negation' },
-                { name: 'Velocity', desc: 'Knockback reduction' }
-            ],
-            utility: [
-                { name: 'ClickGui', desc: 'Interactive GUI control' },
-                { name: 'HudEditor', desc: 'Customize HUD positions' },
-                { name: 'AntiAFK', desc: 'Prevent AFK timeout' }
-            ]
+        // Template Data
+        const templates = [
+            { id: 'portfolio', name: 'Portfolio', icon: '👨‍💼' },
+            { id: 'blog', name: 'Blog', icon: '📝' },
+            { id: 'business', name: 'Business', icon: '🏢' },
+            { id: 'shop', name: 'Shop', icon: '🛍️' },
+            { id: 'docs', name: 'Documentation', icon: '📚' }
+        ];
+
+        const templateContent = {
+            portfolio: {
+                title: 'Portfolio',
+                preview: `
+                    <div class="preview-title">Welcome to My Portfolio</div>
+                    <div class="preview-desc">I'm a creative developer passionate about building beautiful web experiences. Check out my latest projects below.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">View My Work</button>
+                        <button class="action-btn secondary">Contact Me</button>
+                    </div>
+                `,
+                html: '<!-- Portfolio HTML will be generated here -->'
+            },
+            blog: {
+                title: 'Blog',
+                preview: `
+                    <div class="preview-title">My Blog</div>
+                    <div class="preview-desc">Stories, insights, and thoughts on web development, design, and technology.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">Read Latest Post</button>
+                        <button class="action-btn secondary">Browse All Posts</button>
+                    </div>
+                `,
+                html: '<!-- Blog HTML will be generated here -->'
+            },
+            business: {
+                title: 'Business',
+                preview: `
+                    <div class="preview-title">Our Business</div>
+                    <div class="preview-desc">We help companies succeed through innovative digital solutions and expert consulting.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">Get a Quote</button>
+                        <button class="action-btn secondary">Learn More</button>
+                    </div>
+                `,
+                html: '<!-- Business HTML will be generated here -->'
+            },
+            shop: {
+                title: 'Shop',
+                preview: `
+                    <div class="preview-title">Welcome to Our Store</div>
+                    <div class="preview-desc">Discover amazing products handpicked just for you. Fast shipping & great prices.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">Shop Now</button>
+                        <button class="action-btn secondary">View Sale Items</button>
+                    </div>
+                `,
+                html: '<!-- Shop HTML will be generated here -->'
+            },
+            docs: {
+                title: 'Documentation',
+                preview: `
+                    <div class="preview-title">Documentation</div>
+                    <div class="preview-desc">Complete guides and API documentation to help you get started with our platform.</div>
+                    <div class="preview-buttons">
+                        <button class="action-btn">Get Started</button>
+                        <button class="action-btn secondary">API Reference</button>
+                    </div>
+                `,
+                html: '<!-- Docs HTML will be generated here -->'
+            }
         };
 
-        let currentCategory = 'combat';
-        let musicPlaying = false;
+        let currentTemplate = 'portfolio';
+        let userGitHubData = null;
+        let accessToken = null;
 
         // Create Particles
         function createParticles() {
@@ -716,82 +690,151 @@
             }
         }
 
-        // Initialize Categories
-        function initCategories() {
-            const container = document.getElementById('categories');
-            Object.keys(allModules).forEach(category => {
+        // Initialize Templates
+        function initTemplates() {
+            const container = document.getElementById('templates');
+            templates.forEach(template => {
                 const btn = document.createElement('button');
-                btn.className = 'category-btn' + (category === 'combat' ? ' active' : '');
-                btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-                btn.onclick = () => switchCategory(category, btn);
+                btn.className = 'template-btn' + (template.id === 'portfolio' ? ' active' : '');
+                btn.textContent = `${template.icon} ${template.name}`;
+                btn.onclick = () => selectTemplate(template.id, btn);
                 container.appendChild(btn);
             });
         }
 
-        // Switch Category
-        function switchCategory(category, btn) {
-            currentCategory = category;
-            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        // Select Template
+        function selectTemplate(id, btn) {
+            currentTemplate = id;
+            document.querySelectorAll('.template-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('section-title').textContent = category.charAt(0).toUpperCase() + category.slice(1);
-            document.getElementById('module-count').textContent = allModules[category].length + ' Modules';
-            renderModules();
+            document.getElementById('editorTitle').textContent = templateContent[id].title;
+            document.getElementById('previewContainer').innerHTML = templateContent[id].preview;
+            showAISuggestions(id);
         }
 
-        // Render Modules
-        function renderModules() {
-            const grid = document.getElementById('modules-grid');
-            grid.innerHTML = '';
-            allModules[currentCategory].forEach(module => {
-                const card = document.createElement('div');
-                card.className = 'module-card';
-                card.innerHTML = `
-                    <div class="module-header">
-                        <div class="module-name">${module.name}</div>
-                        <div class="module-toggle" onclick="toggleModule(event)"></div>
-                    </div>
-                    <div class="module-desc">${module.desc}</div>
-                `;
-                grid.appendChild(card);
+        // Show AI Suggestions
+        function showAISuggestions(templateId) {
+            const suggestions = {
+                portfolio: [
+                    '✨ Add hero section with background image',
+                    '📸 Create projects gallery with hover effects',
+                    '📧 Add contact form',
+                    '🎯 Add testimonials section',
+                    '💼 Add skills/experience section'
+                ],
+                blog: [
+                    '📰 Add recent posts section',
+                    '🏷️ Add categories and tags',
+                    '💬 Add comments system',
+                    '🔍 Add search functionality',
+                    '📅 Add blog archive'
+                ],
+                business: [
+                    '💼 Add services section',
+                    '👥 Add team profiles',
+                    '📊 Add statistics/metrics',
+                    '💬 Add client testimonials',
+                    '📞 Add contact form'
+                ],
+                shop: [
+                    '🛍️ Add product grid',
+                    '💰 Add shopping cart',
+                    '⭐ Add product reviews',
+                    '🏷️ Add filters and search',
+                    '🚚 Add shipping info'
+                ],
+                docs: [
+                    '📑 Add table of contents',
+                    '🔍 Add search functionality',
+                    '💻 Add code examples',
+                    '📖 Add FAQ section',
+                    '🔗 Add related links'
+                ]
+            };
+
+            const container = document.getElementById('aiSuggestions');
+            container.innerHTML = '';
+            suggestions[templateId].forEach(suggestion => {
+                const div = document.createElement('div');
+                div.className = 'ai-suggestion';
+                div.textContent = suggestion;
+                div.onclick = () => askAI(suggestion);
+                container.appendChild(div);
             });
         }
 
-        // Toggle Module
-        function toggleModule(e) {
-            e.stopPropagation();
-            const toggle = e.target.classList.contains('module-toggle') ? e.target : e.target.closest('.module-toggle');
-            toggle.classList.toggle('enabled');
-            toggle.closest('.module-card').classList.toggle('active');
+        // Ask AI
+        function askAI(suggestion) {
+            const prompt = suggestion || document.getElementById('aiPrompt').value;
+            if (!prompt.trim()) return;
+
+            alert(`🤖 AI Assistant:\n\n"${prompt}"\n\nI've generated code for this feature. It will be added to your website preview above!`);
+            document.getElementById('aiPrompt').value = '';
         }
 
-        // Music Toggle
-        function toggleMusic() {
-            musicPlaying = !musicPlaying;
-            const dot = document.getElementById('music-dot');
-            const text = document.getElementById('music-text');
-            if (musicPlaying) {
-                dot.classList.add('playing');
-                text.textContent = '🎵 ON';
-            } else {
-                dot.classList.remove('playing');
-                text.textContent = '🎵 Music';
+        // GitHub Authentication
+        function authenticateGitHub() {
+            alert('In a real implementation, this would redirect to GitHub OAuth.\n\nFor demo: Simulating login...');
+            
+            // Simulate login
+            userGitHubData = {
+                login: 'your-username',
+                name: 'Your Name',
+                avatar_url: '👤'
+            };
+            
+            document.getElementById('githubAuthBtn').style.display = 'none';
+            document.getElementById('userProfile').style.display = 'flex';
+            document.getElementById('userName').textContent = userGitHubData.login;
+            document.getElementById('userAvatar').textContent = userGitHubData.avatar_url;
+        }
+
+        // Preview Website
+        function previewWebsite() {
+            alert('Opening live preview in new window...');
+            // In real implementation, open preview in new window
+        }
+
+        // Deploy Website
+        function deployWebsite() {
+            if (!userGitHubData) {
+                alert('Please login with GitHub first');
+                return;
             }
+            document.getElementById('deployModal').classList.add('active');
         }
 
-        // Actions
-        function joinDiscord() {
-            window.open('https://discord.gg/RFGAEtzH3N', '_blank');
+        // Create and Deploy
+        function createAndDeploy() {
+            const repoName = document.getElementById('repoName').value;
+            const siteName = document.getElementById('siteName').value;
+
+            if (!repoName || !siteName) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            alert(`✅ Success!\n\nRepository created: ${userGitHubData.login}/${repoName}\nSite name: ${siteName}\nDeploying to GitHub Pages...\n\nYour site will be live at: https://${userGitHubData.login}.github.io/${repoName}`);
+            closeModal('deployModal');
         }
 
-        function downloadClient() {
-            alert('Download links available in Discord!\nhttps://discord.gg/RFGAEtzH3N');
+        // Modal Functions
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
-            initCategories();
-            renderModules();
+            initTemplates();
+            showAISuggestions('portfolio');
+        });
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.onclick = (e) => {
+                if (e.target === modal) closeModal(modal.id);
+            };
         });
     </script>
 </body>
