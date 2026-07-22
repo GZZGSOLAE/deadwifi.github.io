@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoidedV1 | Premium Minecraft Client</title>
-    <meta name="description" content="VoidedV1 - Premium PvP & Utility Minecraft Client with 28 Modules">
+    <meta name="description" content="VoidedV1 - Premium Click GUI Minecraft Client for 1.21.11 | Fabric API">
     
-    <!-- Preconnected performance typography -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Integrated Dark GUI CSS Engine -->
     <style>
-        /* Zero-Lag Resets */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -26,21 +23,19 @@
             color: #e2e1e9;
             font-family: 'Plus Jakarta Sans', sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Particle Background */
-        .particles-container {
+        /* Animated Background Particles */
+        .particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
         }
 
         .particle {
@@ -58,36 +53,51 @@
             100% { transform: translateY(-100vh) translateX(100px) rotateZ(360deg); opacity: 0; }
         }
 
-        /* Main Content */
-        body > * {
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 26, 62, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 85, 247, 0.6);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(168, 85, 247, 0.8);
+        }
+
+        /* Main Container */
+        .container {
             position: relative;
             z-index: 10;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
         }
 
-        /* Navigation Bar */
-        .navbar {
+        /* Top Bar */
+        .topbar {
+            background: linear-gradient(90deg, rgba(10, 14, 39, 0.98) 0%, rgba(26, 15, 61, 0.98) 100%);
             border-bottom: 2px solid #3d2a7c;
-            padding: 22px 0;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(16px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 90%;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
+            font-size: 1.8rem;
             font-weight: 800;
-            font-size: 1.5rem;
             letter-spacing: 2px;
             background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
             -webkit-background-clip: text;
@@ -95,189 +105,187 @@
             text-transform: uppercase;
         }
 
-        .system-status {
-            font-size: 0.9rem;
-            background: rgba(168, 85, 247, 0.1);
-            border: 1.5px solid rgba(168, 85, 247, 0.4);
-            padding: 10px 20px;
-            border-radius: 25px;
-            color: #a855f7;
+        .version-info {
             display: flex;
+            gap: 12px;
             align-items: center;
-            gap: 10px;
+        }
+
+        .version-badge {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a855f7;
+            transition: all 0.3s ease;
+        }
+
+        .version-badge:hover {
+            background: rgba(168, 85, 247, 0.25);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+        }
+
+        .music-toggle {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            padding: 10px 16px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #6366f1;
             transition: all 0.3s ease;
             user-select: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .system-status:hover {
-            background: rgba(168, 85, 247, 0.2);
-            border-color: rgba(168, 85, 247, 0.6);
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-            transform: scale(1.05);
+        .music-toggle:hover {
+            background: rgba(99, 102, 241, 0.25);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
         }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #a855f7;
+        .music-dot {
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
             border-radius: 50%;
-            box-shadow: 0 0 10px #a855f7;
+            box-shadow: 0 0 8px #6366f1;
             transition: all 0.3s ease;
         }
 
-        .status-dot.playing {
+        .music-dot.playing {
             animation: pulse 1s infinite;
-            width: 12px;
-            height: 12px;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 10px #a855f7; }
-            50% { box-shadow: 0 0 25px #a855f7, 0 0 40px rgba(168, 85, 247, 0.6); }
+            0%, 100% { box-shadow: 0 0 8px #6366f1; }
+            50% { box-shadow: 0 0 20px #6366f1, 0 0 30px rgba(99, 102, 241, 0.6); }
         }
 
-        /* Content Wrapper */
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 40px auto;
-            width: 90%;
+        /* Main Content Area */
+        .main-content {
+            display: flex;
             flex: 1;
-        }
-
-        /* Hero Section */
-        .voided-hero {
-            background: linear-gradient(135deg, rgba(10, 5, 25, 0.9) 0%, rgba(26, 15, 61, 0.9) 100%);
-            border: 2px solid #3d2a7c;
-            border-radius: 24px;
-            padding: 60px 40px;
-            text-align: center;
-            margin-bottom: 40px;
-            box-shadow: 0 0 40px rgba(168, 85, 247, 0.2), inset 0 0 60px rgba(168, 85, 247, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .voided-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
-            animation: glow 4s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
-        }
-
-        .voided-hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        .voided-hero p {
-            font-size: 1.2rem;
-            color: #b4a5d6;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .discord-btn {
-            background: linear-gradient(135deg, #5865f2 0%, #404edd 100%);
-            border: 1.5px solid rgba(88, 101, 242, 0.4);
-            color: #ffffff;
-            padding: 16px 40px;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .discord-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(88, 101, 242, 0.4);
-            border-color: rgba(88, 101, 242, 0.6);
-        }
-
-        /* Module Statistics */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-box {
-            text-align: center;
             padding: 20px;
-            background: rgba(168, 85, 247, 0.05);
+            gap: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Left Sidebar - Module Categories */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
+            border: 1.5px solid #2d1b5e;
+            border-radius: 16px;
+            padding: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            overflow-y: auto;
+            max-height: calc(100vh - 140px);
+        }
+
+        .sidebar-title {
+            font-size: 1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #a855f7;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2d1b5e;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-btn {
+            background: rgba(168, 85, 247, 0.08);
             border: 1.5px solid rgba(168, 85, 247, 0.2);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            color: #9b98af;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
         }
 
-        .stat-box:hover {
-            background: rgba(168, 85, 247, 0.1);
+        .category-btn:hover {
+            background: rgba(168, 85, 247, 0.15);
             border-color: rgba(168, 85, 247, 0.4);
-            transform: translateY(-3px);
+            color: #ffffff;
         }
 
-        .stat-value {
-            font-size: 2.2rem;
-            font-weight: 900;
+        .category-btn.active {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(99, 102, 241, 0.15) 100%);
+            border-color: #a855f7;
+            color: #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Center Area - Module Grid */
+        .modules-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .module-count {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: #a855f7;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: #9b98af;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Module Grid */
-        .module-grid {
+        .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            width: 100%;
         }
 
+        /* Module Card */
         .module-card {
             background: linear-gradient(135deg, rgba(10, 7, 20, 0.8) 0%, rgba(15, 10, 46, 0.8) 100%);
             border: 1.5px solid #2d1b5e;
-            border-radius: 16px;
-            padding: 22px;
+            border-radius: 12px;
+            padding: 18px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
@@ -293,6 +301,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
             transition: left 0.5s ease;
+            pointer-events: none;
         }
 
         .module-card:hover::before {
@@ -301,429 +310,488 @@
 
         .module-card:hover {
             border-color: #a855f7;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.05);
-            transform: translateY(-5px);
-            background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.95) 0%, rgba(15, 10, 46, 0.95) 100%);
+            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
+            transform: translateY(-3px);
         }
 
         .module-card.active {
             border-color: #a855f7;
-            background: linear-gradient(135deg, rgba(10, 7, 20, 1) 0%, rgba(26, 15, 61, 1) 100%);
-            box-shadow: inset 0 0 30px rgba(168, 85, 247, 0.1), 0 0 30px rgba(168, 85, 247, 0.25);
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(99, 102, 241, 0.1) 100%);
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.1), 0 8px 25px rgba(168, 85, 247, 0.3);
         }
 
-        .module-category {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #6366f1;
-            background: rgba(99, 102, 241, 0.15);
-            padding: 6px 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .module-card h3 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .module-card p {
-            font-size: 0.9rem;
-            color: #9b98af;
-            line-height: 1.6;
-        }
-
-        /* Section Headers */
-        .section-header {
+        .module-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 50px 0 30px 0;
-            gap: 20px;
+            align-items: start;
+            margin-bottom: 12px;
         }
 
-        .section-header h2 {
-            font-size: 1.8rem;
-            font-weight: 900;
+        .module-name {
+            font-size: 1.1rem;
+            font-weight: 800;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-badge {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #6366f1;
-            background: rgba(99, 102, 241, 0.15);
-            padding: 8px 16px;
-            border-radius: 10px;
             letter-spacing: 1px;
-            border: 1px solid rgba(99, 102, 241, 0.3);
         }
 
-        /* Module Preview */
-        .module-preview {
-            background: linear-gradient(135deg, rgba(10, 7, 20, 0.95) 0%, rgba(15, 10, 46, 0.95) 100%);
-            border: 1.5px solid #3d2a7c;
+        .module-toggle {
+            width: 32px;
+            height: 18px;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 20px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .module-toggle::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #8c899e;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .module-toggle.enabled {
+            background: rgba(168, 85, 247, 0.4);
+            border-color: #a855f7;
+        }
+
+        .module-toggle.enabled::after {
+            background: #a855f7;
+            transform: translateX(14px);
+            box-shadow: 0 0 8px #a855f7;
+        }
+
+        .module-desc {
+            font-size: 0.9rem;
+            color: #9b98af;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        /* Right Sidebar - Info Panel */
+        .info-panel {
+            width: 320px;
+            background: linear-gradient(135deg, rgba(10, 7, 20, 0.9) 0%, rgba(15, 10, 46, 0.9) 100%);
+            border: 1.5px solid #2d1b5e;
             border-radius: 16px;
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15), inset 0 0 20px rgba(168, 85, 247, 0.05);
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        .preview-title {
+        .info-title {
             font-size: 1rem;
             font-weight: 800;
             text-transform: uppercase;
-            color: #6366f1;
-            margin-bottom: 15px;
             letter-spacing: 1.5px;
-        }
-
-        .preview-content {
-            color: #b4a5d6;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .preview-content strong {
             color: #a855f7;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2d1b5e;
         }
 
-        /* Download Section */
-        .download-section {
-            text-align: center;
-            margin: 60px 0;
+        .info-section {
+            margin-bottom: 24px;
         }
 
-        .download-btn {
-            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
-            border: 1.5px solid rgba(168, 85, 247, 0.4);
-            color: #ffffff;
-            padding: 20px 50px;
-            border-radius: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+        .info-label {
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #6366f1;
+            margin-bottom: 8px;
         }
 
-        .download-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.4);
-            border-color: rgba(168, 85, 247, 0.6);
+        .info-content {
+            font-size: 0.95rem;
+            color: #b4a5d6;
+            line-height: 1.6;
         }
 
-        .download-text {
-            color: #9b98af;
-            margin-top: 15px;
-            font-size: 0.9rem;
+        .info-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6366f1;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        /* Footer */
-        footer {
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #2d1b5e;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #a855f7;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
             color: #8c899e;
-            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-top: 4px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #2d1b5e;
         }
 
-        .module-card {
-            animation: fadeIn 0.5s ease;
+        .action-btn {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            border: 1.5px solid rgba(168, 85, 247, 0.3);
+            color: #ffffff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .action-btn:hover {
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.secondary {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: rgba(168, 85, 247, 0.3);
+            color: #a855f7;
+        }
+
+        .action-btn.secondary:hover {
+            background: rgba(168, 85, 247, 0.15);
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.2);
+        }
+
+        /* Compatible Clients */
+        .clients-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .client-item {
+            background: rgba(99, 102, 241, 0.08);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #b4a5d6;
+        }
+
+        .client-item strong {
+            color: #6366f1;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar, .info-panel {
+                width: 100%;
+                position: static;
+                max-height: none;
+            }
+
+            .modules-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topbar {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Particle Background -->
-    <div class="particles-container" id="particles"></div>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
 
-    <!-- Hidden Audio Player -->
+    <!-- Container -->
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="logo">VoidedV1</div>
+            <div class="version-info">
+                <div class="version-badge">Minecraft 1.21.11</div>
+                <div class="version-badge">Fabric API 1.21.11</div>
+                <div class="music-toggle" onclick="toggleMusic()">
+                    <span class="music-dot" id="music-dot"></span>
+                    <span id="music-text">🎵 Music</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-title">Modules</div>
+                <div class="category-list" id="categories"></div>
+            </div>
+
+            <!-- Modules Area -->
+            <div class="modules-area">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title" id="section-title">Combat</h2>
+                    </div>
+                    <div class="module-count" id="module-count">6 Modules</div>
+                </div>
+                <div class="modules-grid" id="modules-grid"></div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel">
+                <div class="info-title">Information</div>
+
+                <div class="info-section">
+                    <div class="info-label">Version</div>
+                    <div class="info-content">
+                        <div style="margin-bottom: 8px;">
+                            <div class="info-badge">MC 1.21.11</div>
+                        </div>
+                        <div style="margin-bottom: 8px;">
+                            <div class="info-badge">Fabric API</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">Compatible Clients</div>
+                    <div class="clients-list">
+                        <div class="client-item"><strong>✓</strong> Minecraft Launcher</div>
+                        <div class="client-item"><strong>✓</strong> Feather Client</div>
+                        <div class="client-item"><strong>✓</strong> Lunar Client</div>
+                        <div class="client-item" style="color: #8c899e; font-size: 0.75rem; margin-top: 8px;">*Not affiliated or sponsored by any client</div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">Statistics</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">28</div>
+                            <div class="stat-label">Modules</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Categories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="joinDiscord()">
+                        💜 Discord Server
+                    </button>
+                    <button class="action-btn secondary" onclick="downloadClient()">
+                        ⬇️ Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Audio -->
     <audio id="musicPlayer" style="display: none;">
         <source src="https://www.youtube.com/watch?v=hXCIH5VTWyg" type="audio/mpeg">
     </audio>
 
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo">VoidedV1</div>
-            <div class="system-status" onclick="toggleMusic()">
-                <span class="status-dot" id="status-indicator"></span>
-                <span id="music-status">🎵 Music: OFF</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="content-wrapper">
-        <!-- Hero Section -->
-        <section class="voided-hero">
-            <h1>VoidedV1</h1>
-            <p>Premium Minecraft PvP & Utility Client - 28 Modules</p>
-            <a href="https://discord.gg/RFGAEtzH3N" class="discord-btn" target="_blank">
-                💜 Join Discord Server
-            </a>
-        </section>
-
-        <!-- Statistics -->
-        <section class="stats-grid">
-            <div class="stat-box">
-                <div class="stat-value">28</div>
-                <div class="stat-label">Total Modules</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">6</div>
-                <div class="stat-label">Combat</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Render</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">8</div>
-                <div class="stat-label">Movement</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">3</div>
-                <div class="stat-label">Player</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">3</div>
-                <div class="stat-label">Utility</div>
-            </div>
-        </section>
-
-        <!-- Combat Modules -->
-        <section>
-            <div class="section-header">
-                <h2>Combat Modules</h2>
-                <span class="section-badge">PvP Focused (6)</span>
-            </div>
-            <div class="module-grid" id="combat-modules"></div>
-        </section>
-
-        <!-- Render Modules -->
-        <section>
-            <div class="section-header">
-                <h2>Render Modules</h2>
-                <span class="section-badge">Visual Enhancement (8)</span>
-            </div>
-            <div class="module-grid" id="render-modules"></div>
-        </section>
-
-        <!-- Movement Modules -->
-        <section>
-            <div class="section-header">
-                <h2>Movement Modules</h2>
-                <span class="section-badge">Mobility Enhanced (8)</span>
-            </div>
-            <div class="module-grid" id="movement-modules"></div>
-        </section>
-
-        <!-- Player Modules -->
-        <section>
-            <div class="section-header">
-                <h2>Player Modules</h2>
-                <span class="section-badge">Survival Tools (3)</span>
-            </div>
-            <div class="module-grid" id="player-modules"></div>
-        </section>
-
-        <!-- Utility Modules -->
-        <section>
-            <div class="section-header">
-                <h2>Utility Modules</h2>
-                <span class="section-badge">System Control (3)</span>
-            </div>
-            <div class="module-grid" id="utility-modules"></div>
-        </section>
-
-        <!-- Module Preview -->
-        <section class="module-preview">
-            <div class="preview-title">📋 Module Details</div>
-            <div class="preview-content" id="module-preview">
-                Click any module above to view detailed information...
-            </div>
-        </section>
-
-        <!-- Download Section -->
-        <section class="download-section">
-            <button class="download-btn" onclick="downloadClient()">
-                ⬇️ Download Client
-            </button>
-            <p class="download-text">💜 Join our Discord for exclusive builds and support</p>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>VoidedV1 © 2024 | Premium Minecraft Client | <a href="https://discord.gg/RFGAEtzH3N" style="color: #a855f7; text-decoration: none;">Join Discord</a></p>
-    </footer>
-
     <script>
         // Module Data
-        const modules = {
+        const allModules = {
             combat: [
-                { name: 'AutoTotem', desc: 'Automatic totem activation & placement in offhand for survival' },
-                { name: 'Criticals', desc: 'Enhanced critical hit detection & boost mechanics' },
-                { name: 'FightBot', desc: 'Automated combat assist with advanced target tracking' },
-                { name: 'KeyPearl', desc: 'Quick pearl usage with optimized timing' },
-                { name: 'KillAura', desc: 'Range-based attack automation system' },
-                { name: 'Reach', desc: 'Extended reach multiplier for block and entity hits' }
+                { name: 'AutoTotem', desc: 'Automatic totem activation & offhand placement' },
+                { name: 'Criticals', desc: 'Enhanced critical hit detection boost' },
+                { name: 'FightBot', desc: 'Automated combat with target tracking' },
+                { name: 'KeyPearl', desc: 'Quick pearl usage optimization' },
+                { name: 'KillAura', desc: 'Range-based attack automation' },
+                { name: 'Reach', desc: 'Extended reach multiplier' }
             ],
             render: [
-                { name: 'ArmorHUD', desc: 'Display armor durability & status information on screen' },
-                { name: 'BlockHighlight', desc: 'Highlight block outlines in the world' },
-                { name: 'Chams', desc: 'Entity wallhack visualization system' },
-                { name: 'CustomNameTags', desc: 'Custom player name rendering and display' },
-                { name: 'DonutMinesESP', desc: 'Mine block detection & highlighting system' },
-                { name: 'FullBright', desc: 'Brightness enhancement utility for dark areas' },
-                { name: 'HitPartials', desc: 'Display hit damage indicators in real-time' },
-                { name: 'NoRender', desc: 'Selective entity render control and hiding' }
+                { name: 'ArmorHUD', desc: 'Armor durability display system' },
+                { name: 'BlockHighlight', desc: 'Block outline visualization' },
+                { name: 'Chams', desc: 'Entity wallhack system' },
+                { name: 'CustomNameTags', desc: 'Custom player name rendering' },
+                { name: 'DonutMinesESP', desc: 'Mine block detection' },
+                { name: 'FullBright', desc: 'Brightness enhancement utility' },
+                { name: 'HitPartials', desc: 'Hit damage indicators' },
+                { name: 'NoRender', desc: 'Selective entity hiding' }
             ],
             movement: [
-                { name: 'Fly', desc: 'Creative mode flight enabled in survival' },
-                { name: 'InfiniteJump', desc: 'Unlimited jump height ability' },
-                { name: 'LongJump', desc: 'Extended jump distance boost' },
-                { name: 'Parkour', desc: 'Automated parkour movement assist' },
-                { name: 'ReverseStep', desc: 'Backward stepping motion enable' },
-                { name: 'Speed', desc: 'Movement velocity increase multiplier' },
+                { name: 'Fly', desc: 'Creative flight mode enabled' },
+                { name: 'InfiniteJump', desc: 'Unlimited jump height' },
+                { name: 'LongJump', desc: 'Extended jump distance' },
+                { name: 'Parkour', desc: 'Automated parkour assist' },
+                { name: 'ReverseStep', desc: 'Backward stepping enabled' },
+                { name: 'Speed', desc: 'Movement velocity boost' },
                 { name: 'Sprint', desc: 'Continuous sprint activation' },
-                { name: 'Step', desc: 'Auto block stepping & climbing feature' }
+                { name: 'Step', desc: 'Auto block stepping' }
             ],
             player: [
-                { name: 'FastPlace', desc: 'Rapid block placement speed increase' },
-                { name: 'NoFall', desc: 'Fall damage negation system' },
-                { name: 'Velocity', desc: 'Knockback reduction modifier' }
+                { name: 'FastPlace', desc: 'Rapid block placement' },
+                { name: 'NoFall', desc: 'Fall damage negation' },
+                { name: 'Velocity', desc: 'Knockback reduction' }
             ],
             utility: [
-                { name: 'ClickGui', desc: 'Interactive GUI control system for all modules' },
-                { name: 'HudEditor', desc: 'Customize HUD element positions and sizes' },
-                { name: 'AntiAFK', desc: 'Prevent AFK timeout detection and penalties' }
+                { name: 'ClickGui', desc: 'Interactive GUI control' },
+                { name: 'HudEditor', desc: 'Customize HUD positions' },
+                { name: 'AntiAFK', desc: 'Prevent AFK timeout' }
             ]
         };
+
+        let currentCategory = 'combat';
+        let musicPlaying = false;
 
         // Create Particles
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = 50;
-
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                
-                const left = Math.random() * 100;
-                const delay = Math.random() * 20;
-                const duration = 10 + Math.random() * 10;
-                const size = 2 + Math.random() * 6;
-
-                particle.style.left = left + '%';
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.animationDuration = duration + 's';
-                particle.style.animationDelay = delay + 's';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (2 + Math.random() * 6) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particle.style.animationDelay = Math.random() * 20 + 's';
                 particle.style.opacity = 0.3 + Math.random() * 0.5;
-
                 container.appendChild(particle);
             }
         }
 
-        // Render Modules
-        function renderModules(category, containerId) {
-            const container = document.getElementById(containerId);
-            if (!modules[category]) return;
-
-            modules[category].forEach(module => {
-                const card = document.createElement('div');
-                card.className = 'module-card';
-                card.innerHTML = `
-                    <div class="module-category">${category}</div>
-                    <h3>${module.name}</h3>
-                    <p>${module.desc}</p>
-                `;
-                card.onclick = () => showModuleDetails(module, category);
-                container.appendChild(card);
+        // Initialize Categories
+        function initCategories() {
+            const container = document.getElementById('categories');
+            Object.keys(allModules).forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'category-btn' + (category === 'combat' ? ' active' : '');
+                btn.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                btn.onclick = () => switchCategory(category, btn);
+                container.appendChild(btn);
             });
         }
 
-        // Show Module Details
-        function showModuleDetails(module, category) {
-            const preview = document.getElementById('module-preview');
-            preview.innerHTML = `
-                <strong>${module.name}</strong><br><br>
-                <strong>Category:</strong> ${category.toUpperCase()}<br><br>
-                <strong>Description:</strong><br>
-                ${module.desc}<br><br>
-                <strong>Features:</strong><br>
-                • Enabled by default in the client<br>
-                • Fully customizable via ClickGui<br>
-                • Compatible with all Minecraft versions<br>
-                • Toggle via key binds or in-game menu<br>
-                • Optimized for performance
-            `;
-
-            // Update active card
-            document.querySelectorAll('.module-card').forEach(c => c.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+        // Switch Category
+        function switchCategory(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('section-title').textContent = category.charAt(0).toUpperCase() + category.slice(1);
+            document.getElementById('module-count').textContent = allModules[category].length + ' Modules';
+            renderModules();
         }
 
-        // Music Control
-        const statusIndicator = document.getElementById('status-indicator');
-        const musicStatus = document.getElementById('music-status');
-        let isPlaying = false;
+        // Render Modules
+        function renderModules() {
+            const grid = document.getElementById('modules-grid');
+            grid.innerHTML = '';
+            allModules[currentCategory].forEach(module => {
+                const card = document.createElement('div');
+                card.className = 'module-card';
+                card.innerHTML = `
+                    <div class="module-header">
+                        <div class="module-name">${module.name}</div>
+                        <div class="module-toggle" onclick="toggleModule(event)"></div>
+                    </div>
+                    <div class="module-desc">${module.desc}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
+        // Toggle Module
+        function toggleModule(e) {
+            e.stopPropagation();
+            const toggle = e.target.classList.contains('module-toggle') ? e.target : e.target.closest('.module-toggle');
+            toggle.classList.toggle('enabled');
+            toggle.closest('.module-card').classList.toggle('active');
+        }
+
+        // Music Toggle
         function toggleMusic() {
-            isPlaying = !isPlaying;
-
-            if (isPlaying) {
-                statusIndicator.classList.add('playing');
-                musicStatus.textContent = '🎵 Music: ON';
+            musicPlaying = !musicPlaying;
+            const dot = document.getElementById('music-dot');
+            const text = document.getElementById('music-text');
+            if (musicPlaying) {
+                dot.classList.add('playing');
+                text.textContent = '🎵 ON';
             } else {
-                statusIndicator.classList.remove('playing');
-                musicStatus.textContent = '🎵 Music: OFF';
+                dot.classList.remove('playing');
+                text.textContent = '🎵 Music';
             }
         }
 
-        // Download Handler
+        // Actions
+        function joinDiscord() {
+            window.open('https://discord.gg/RFGAEtzH3N', '_blank');
+        }
+
         function downloadClient() {
-            alert('🎵 Download links available in Discord!\nJoin: https://discord.gg/RFGAEtzH3N');
+            alert('Download links available in Discord!\nhttps://discord.gg/RFGAEtzH3N');
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
-            renderModules('combat', 'combat-modules');
-            renderModules('render', 'render-modules');
-            renderModules('movement', 'movement-modules');
-            renderModules('player', 'player-modules');
-            renderModules('utility', 'utility-modules');
+            initCategories();
+            renderModules();
         });
     </script>
 </body>
