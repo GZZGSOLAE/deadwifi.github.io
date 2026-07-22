@@ -42,7 +42,7 @@
         }
 
         .nav-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 90%;
             display: flex;
@@ -106,10 +106,11 @@
             background: #06050e;
             border-bottom: 1px solid #110f22;
             padding: 10px 0;
+            overflow-x: auto;
         }
 
         .tab-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 90%;
             display: flex;
@@ -146,7 +147,7 @@
 
         /* Tab Content Panel Distribution */
         .content-wrapper {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 40px auto;
             width: 90%;
             flex: 1;
@@ -225,6 +226,169 @@
             overflow-x: auto;
         }
 
+        /* VoidedV1 Specific Styles */
+        .voided-hero {
+            background: linear-gradient(135deg, #0a0512 0%, #1a0f3d 100%);
+            border: 1px solid #2d1b5e;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+        }
+
+        .voided-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .voided-hero p {
+            font-size: 1.1rem;
+            color: #9b98af;
+            margin-bottom: 20px;
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .module-card {
+            background: linear-gradient(180deg, #090714 0%, #06050e 100%);
+            border: 1px solid #110f22;
+            border-radius: 16px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            border-color: #a855f7;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .module-card.active {
+            border-color: #a855f7;
+            background: linear-gradient(180deg, #0a0714 0%, #060510 100%);
+            box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.1), 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .module-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .module-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .module-card p {
+            font-size: 0.9rem;
+            color: #9b98af;
+            line-height: 1.5;
+        }
+
+        .module-stats {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #16132b;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8c899e;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #a855f7;
+            font-size: 1.1rem;
+        }
+
+        .community-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .community-btn {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: #ffffff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        .community-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            font-size: 1.1rem;
+            padding: 20px 40px;
+            margin: 20px 0;
+        }
+
+        .download-btn:hover {
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+        }
+
+        .module-preview {
+            background: #030206;
+            border: 1px solid #16132b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .preview-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #6366f1;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
         @keyframes bounce {
             0% { transform: translateY(0); }
             100% { transform: translateY(-6px); }
@@ -254,6 +418,7 @@
             <button class="tab-btn" onclick="switchTab(event, 'ios-tweaks')">🍎 iOS / iPhone</button>
             <button class="tab-btn" onclick="switchTab(event, 'android-tweaks')">🤖 Android</button>
             <button class="tab-btn" onclick="switchTab(event, 'chrome-tweaks')">💻 Chromebook</button>
+            <button class="tab-btn" onclick="switchTab(event, 'voided-client')">⚔️ VoidedV1</button>
         </div>
     </nav>
 
@@ -323,17 +488,179 @@
                 <p>Adjust Crostini container resource allocations to maximize available system performance during concurrent operations.</p>
             </div>
         </section>
+
+        <!-- VOIDED V1 CLIENT -->
+        <section id="voided-client" class="tab-content">
+            <div class="voided-hero">
+                <h1>VoidedV1 Client</h1>
+                <p>Premium Minecraft PvP & Utility Client - 28 Modules Ready to Deploy</p>
+                <div class="community-links">
+                    <a href="https://discord.gg/RFGAEtzH3N" class="community-btn" target="_blank">
+                        💜 Join Discord
+                    </a>
+                    <a href="https://www.youtube.com/@koa-tech1" class="community-btn" target="_blank">
+                        📺 Watch Tutorials
+                    </a>
+                </div>
+            </div>
+
+            <div class="tweak-card" style="margin-bottom: 30px;">
+                <h3>📊 Client Statistics</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 15px; background: rgba(168, 85, 247, 0.05); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #a855f7;">28</div>
+                        <div style="font-size: 0.9rem; color: #8c899e; margin-top: 5px;">Total Modules</div>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: rgba(99, 102, 241, 0.05); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #6366f1;">6</div>
+                        <div style="font-size: 0.9rem; color: #8c899e; margin-top: 5px;">Combat Modules</div>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: rgba(6, 182, 212, 0.05); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #06b6d4;">8</div>
+                        <div style="font-size: 0.9rem; color: #8c899e; margin-top: 5px;">Render Modules</div>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: rgba(34, 197, 94, 0.05); border-radius: 8px;">
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #22c55e;">8</div>
+                        <div style="font-size: 0.9rem; color: #8c899e; margin-top: 5px;">Movement Modules</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-header">
+                <h2>Combat Modules (6)</h2>
+                <span class="category-badge">PvP Focused</span>
+            </div>
+            <div class="module-grid" id="combat-modules"></div>
+
+            <div class="content-header" style="margin-top: 40px;">
+                <h2>Render Modules (8)</h2>
+                <span class="category-badge">Visual Enhancement</span>
+            </div>
+            <div class="module-grid" id="render-modules"></div>
+
+            <div class="content-header" style="margin-top: 40px;">
+                <h2>Movement Modules (8)</h2>
+                <span class="category-badge">Mobility Enhanced</span>
+            </div>
+            <div class="module-grid" id="movement-modules"></div>
+
+            <div class="content-header" style="margin-top: 40px;">
+                <h2>Player Modules (3)</h2>
+                <span class="category-badge">Survival Tools</span>
+            </div>
+            <div class="module-grid" id="player-modules"></div>
+
+            <div class="content-header" style="margin-top: 40px;">
+                <h2>Utility Modules (3)</h2>
+                <span class="category-badge">System Control</span>
+            </div>
+            <div class="module-grid" id="utility-modules"></div>
+
+            <!-- Module Preview -->
+            <div class="tweak-card" style="margin-top: 40px;">
+                <h3>📋 Selected Module Details</h3>
+                <div class="module-preview" id="module-preview">
+                    <div class="preview-title">Click any module to view details</div>
+                    <p style="color: #8c899e; margin-top: 10px;">Module information and configurations will appear here...</p>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="community-btn download-btn" onclick="alert('Download links coming soon! Join Discord for early access.')">
+                    ⬇️ Download VoidedV1 Client
+                </button>
+                <p style="color: #8c899e; margin-top: 15px; font-size: 0.9rem;">Join our Discord for the latest releases and support</p>
+            </div>
+        </section>
     </main>
 
     <script>
+        const modules = {
+            combat: [
+                { name: 'AutoTotem', desc: 'Automatic totem activation & placement in offhand' },
+                { name: 'Criticals', desc: 'Enhanced critical hit detection & boost' },
+                { name: 'FightBot', desc: 'Automated combat assist with target tracking' },
+                { name: 'KeyPearl', desc: 'Quick pearl usage with optimized timing' },
+                { name: 'KillAura', desc: 'Range-based attack automation system' },
+                { name: 'Reach', desc: 'Extended reach multiplier for hits' }
+            ],
+            render: [
+                { name: 'ArmorHUD', desc: 'Display armor durability & status on screen' },
+                { name: 'BlockHighlight', desc: 'Highlight block outlines in world' },
+                { name: 'Chams', desc: 'Entity wallhack visualization system' },
+                { name: 'CustomNameTags', desc: 'Custom player name rendering' },
+                { name: 'DonutMinesESP', desc: 'Mine block detection & highlighting' },
+                { name: 'FullBright', desc: 'Brightness enhancement utility' },
+                { name: 'HitPartials', desc: 'Display hit damage indicators' },
+                { name: 'NoRender', desc: 'Selective entity render control' }
+            ],
+            movement: [
+                { name: 'Fly', desc: 'Creative mode flight enabled' },
+                { name: 'InfiniteJump', desc: 'Unlimited jump height ability' },
+                { name: 'LongJump', desc: 'Extended jump distance boost' },
+                { name: 'Parkour', desc: 'Automated parkour movement assist' },
+                { name: 'ReverseStep', desc: 'Backward stepping motion enable' },
+                { name: 'Speed', desc: 'Movement velocity increase' },
+                { name: 'Sprint', desc: 'Continuous sprint activation' },
+                { name: 'Step', desc: 'Auto block stepping & climbing' }
+            ],
+            player: [
+                { name: 'FastPlace', desc: 'Rapid block placement speed' },
+                { name: 'NoFall', desc: 'Fall damage negation system' },
+                { name: 'Velocity', desc: 'Knockback reduction modifier' }
+            ],
+            utility: [
+                { name: 'ClickGui', desc: 'Interactive GUI control system' },
+                { name: 'HudEditor', desc: 'Customize HUD element positions' },
+                { name: 'AntiAFK', desc: 'Prevent AFK timeout detection' }
+            ]
+        };
+
+        function renderModules(category, containerId, color) {
+            const container = document.getElementById(containerId);
+            if (!modules[category]) return;
+
+            modules[category].forEach(module => {
+                const card = document.createElement('div');
+                card.className = 'module-card';
+                card.innerHTML = `
+                    <div class="module-category" style="background: rgba(${color}, 0.1); color: rgb(${color});">${category}</div>
+                    <h3>${module.name}</h3>
+                    <p>${module.desc}</p>
+                `;
+                card.onclick = () => showModuleDetails(module, category, color);
+                container.appendChild(card);
+            });
+        }
+
+        function showModuleDetails(module, category, color) {
+            const preview = document.getElementById('module-preview');
+            preview.innerHTML = `
+                <div class="preview-title">${module.name} - ${category.toUpperCase()}</div>
+                <p style="color: #a855f7; margin-top: 10px; font-weight: 700;">${module.desc}</p>
+                <div style="margin-top: 20px; padding: 15px; background: rgba(${color}, 0.05); border-radius: 8px; border-left: 3px solid rgb(${color});">
+                    <div style="font-size: 0.85rem; color: #8c899e;">
+                        <strong style="color: #ffffff;">Configuration:</strong><br>
+                        • Enabled by default<br>
+                        • Customizable settings available<br>
+                        • Compatible with all Minecraft versions<br>
+                        • Toggle via ClickGui or key binds
+                    </div>
+                </div>
+            `;
+
+            // Update card highlight
+            document.querySelectorAll('.module-card').forEach(c => c.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
         const audioPlayer = document.getElementById('musicPlayer');
         const statusIndicator = document.getElementById('status-indicator');
         const musicStatus = document.getElementById('music-status');
         let isPlaying = false;
 
-        // Create an invisible iframe to load YouTube
         function loadYouTubeStream() {
-            // Using a streaming service approach instead
             const iframeHTML = `
                 <iframe 
                     style="position: fixed; top: -9999px; left: -9999px; width: 1px; height: 1px;" 
@@ -356,7 +683,6 @@
                 musicStatus.textContent = '🎵 Music: OFF';
             }
 
-            // Log for debugging
             console.log('Music toggled:', isPlaying ? 'PLAYING' : 'PAUSED');
         }
 
@@ -372,34 +698,35 @@
         function switchTab(event, tabId) {
             event.preventDefault();
             
-            // Hide all tab contents
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => {
                 content.classList.remove('active');
             });
 
-            // Remove active class from all buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
             });
 
-            // Show selected tab content
             const selectedContent = document.getElementById(tabId);
             if (selectedContent) {
                 selectedContent.classList.add('active');
             }
 
-            // Highlight the clicked button
             event.target.classList.add('active');
         }
 
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Page loaded - Music player ready');
             loadYouTubeStream();
             
-            // Add keyboard shortcut (spacebar to toggle music)
+            // Render all module categories
+            renderModules('combat', 'combat-modules', '168, 85, 247');
+            renderModules('render', 'render-modules', '6, 182, 212');
+            renderModules('movement', 'movement-modules', '34, 197, 94');
+            renderModules('player', 'player-modules', '249, 115, 22');
+            renderModules('utility', 'utility-modules', '99, 102, 241');
+            
             document.addEventListener('keydown', function(e) {
                 if (e.code === 'Space' && e.ctrlKey) {
                     e.preventDefault();
